@@ -72,4 +72,4 @@ alias mv='mv -i'
 alias du='du -h'
 alias g='git'
 
-source $HOME/anaconda3/etc/profile.d/conda.sh
+source $HOME/.miniconda/etc/profile.d/conda.sh

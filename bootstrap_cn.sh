@@ -20,6 +20,7 @@ curl -fLo ~/.condarc https://gitee.com/yttty/dotfiles/raw/master/.condarc
 pip config set global.index-url https://pypi.tuna.tsinghua.edu.cn/simple
 # ~/.miniconda3/bin/pip install $(curl -fL https://gitee.com/yttty/dotfiles/raw/master/requirements.txt)
 # rm -rf ~/.cache/pip/*
+rm ~/miniconda.sh
 
 # 4. tmux config
 curl -fLo ~/.tmux.conf https://gitee.com/yttty/dotfiles/raw/master/.tmux.conf

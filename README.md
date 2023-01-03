@@ -6,8 +6,8 @@
 1. First, (if you haven't done so,) install the dependencies ```sudo apt install git curl zsh```.
 2. Then,
     1. usually you could config by:
-        - ```sh -c "$(curl -fsSL https://raw.githubusercontent.com/yttty/dotfiles/raw/master/bootstrap.sh)"```
-        - ```sh -c "$(wget https://raw.githubusercontent.com/yttty/dotfiles/raw/master/bootstrap.sh -O -)"```
+        - ```sh -c "$(curl -fsSL https://raw.githubusercontent.com/yttty/dotfiles/master/bootstrap.sh)"```
+        - ```sh -c "$(wget https://raw.githubusercontent.com/yttty/dotfiles/master/bootstrap.sh -O -)"```
     2. if you are in Mainland China:
         - ```sh -c "$(curl -fsSL https://gitee.com/yttty/dotfiles/raw/master/bootstrap_cn.sh)"```
         - ```sh -c "$(wget https://gitee.com/yttty/dotfiles/raw/master/bootstrap_cn.sh -O -)"```
