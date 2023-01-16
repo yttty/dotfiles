@@ -32,5 +32,6 @@ curl -fLo ~/.local/bin/diff-so-fancy --create-dirs https://gitee.com/yttty/dotfi
 chmod u+x ~/.local/bin/diff-so-fancy
 
 # 6. vim config
+# no vim config in CN due to network issus
 # curl -fLo ~/.vimrc https://gitee.com/yttty/dotfiles/raw/master/.vimrc
 # echo | vim -c "PlugInstall! | qall! "

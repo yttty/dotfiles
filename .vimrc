@@ -127,7 +127,7 @@ set title
 set titleold="Terminal"
 set titlestring=%F
 
-set statusline=%F%m%r%h%w%=(%{&ff}/%Y)\ (line\ %l\/%L,\ col\ %c)\
+set statusline=%F%m%r%h%w%=[%{&ff}/%Y]\ [line\ %l\/%L,\ col\ %c]
 
 " Search mappings: These will make it so that going to the next one in a
 " search will center on the line it's found in.

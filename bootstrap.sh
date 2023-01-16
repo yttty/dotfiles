@@ -30,5 +30,5 @@ curl -fLo ~/.local/bin/diff-so-fancy --create-dirs https://raw.githubusercontent
 chmod u+x ~/.local/bin/diff-so-fancy
 
 # 6. vim config
-# curl -fLo ~/.vimrc https://raw.githubusercontent.com/yttty/dotfiles/master/.vimrc
-# echo | vim -c "PlugInstall! | qall! "
+curl -fLo ~/.vimrc https://raw.githubusercontent.com/yttty/dotfiles/master/.vimrc
+echo | vim -c "PlugInstall! | qall! "
