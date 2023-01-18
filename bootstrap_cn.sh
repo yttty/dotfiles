@@ -11,7 +11,7 @@ git clone --depth=1 https://github.com/zsh-users/zsh-syntax-highlighting ${ZSH_C
 curl -fLo ~/.zshrc https://gitee.com/yttty/dotfiles/raw/master/.zshrc
 
 # 3. python and conda config (TUNA mirror)
-wget https://mirrors.bfsu.edu.cn/anaconda/miniconda/Miniconda-latest-Linux-x86_64.sh -O ~/miniconda.sh
+wget https://mirrors.bfsu.edu.cn/anaconda/miniconda/Miniconda3-latest-Linux-x86_64.sh -O ~/miniconda.sh
 bash ~/miniconda.sh -b -p $HOME/.miniconda
 eval "$($HOME/.miniconda/bin/conda shell.zsh hook)"
 conda init
