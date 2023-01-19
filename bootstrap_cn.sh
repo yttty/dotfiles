@@ -14,7 +14,7 @@ curl -fLo ~/.zshrc https://gitee.com/yttty/dotfiles/raw/master/.zshrc
 wget https://mirrors.bfsu.edu.cn/anaconda/miniconda/Miniconda-latest-Linux-x86_64.sh -O ~/miniconda.sh
 bash ~/miniconda.sh -b -p $HOME/.miniconda
 eval "$($HOME/.miniconda/bin/conda shell.zsh hook)"
-conda init
+conda init zsh
 # conda config --set auto_activate_base false
 curl -fLo ~/.condarc https://gitee.com/yttty/dotfiles/raw/master/.condarc
 pip config set global.index-url https://pypi.tuna.tsinghua.edu.cn/simple

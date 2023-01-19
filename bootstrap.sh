@@ -14,7 +14,7 @@ curl -fLo ~/.zshrc https://raw.githubusercontent.com/yttty/dotfiles/master/.zshr
 wget https://repo.anaconda.com/miniconda/Miniconda3-latest-Linux-x86_64.sh -O ~/miniconda.sh
 bash ~/miniconda.sh -b -p $HOME/.miniconda
 eval "$($HOME/.miniconda/bin/conda shell.zsh hook)"
-conda init
+conda init zsh
 # conda config --set auto_activate_base false
 # ~/.miniconda3/bin/pip install $(curl -fL https://raw.githubusercontent.com/yttty/dotfiles/master/requirements.txt)
 # rm -rf ~/.cache/pip/*
