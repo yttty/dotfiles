@@ -11,8 +11,10 @@
     2. if you are in Mainland China:
         - ```sh -c "$(curl -fsSL https://gitee.com/yttty/dotfiles/raw/master/bootstrap_cn.sh)"```
         - ```sh -c "$(wget https://gitee.com/yttty/dotfiles/raw/master/bootstrap_cn.sh -O -)"```
-3. Lastly, change your default shell to `zsh` by ```chsh -s $(grep /zsh$ /etc/shells | tail -1)```
-    - If `chsh` doesn't work, try
+3. Lastly, change your default shell to `zsh`
+    - *(sudo needed)* ```sudo chsh -s $(which zsh) $(whoami)```
+    - *(Password needed)* ```chsh -s $(grep /zsh$ /etc/shells | tail -1)```
+    - If neither work, try
         ```bash
         mv ~/.bash_profile ~/.bash_profile.bak
         echo 'export SHELL=/usr/bin/zsh
