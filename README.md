@@ -3,30 +3,81 @@
 
 ## One-line config
 
-1. First, (if you haven't done so,) install the dependencies ```sudo apt install git curl zsh```.
-2. Then,
-    1. usually you could config by:
-        - ```sh -c "$(curl -fsSL https://raw.githubusercontent.com/yttty/dotfiles/master/bootstrap.sh)"```
-        - ```sh -c "$(wget https://raw.githubusercontent.com/yttty/dotfiles/master/bootstrap.sh -O -)"```
-    2. if you are in Mainland China:
-        - ```sh -c "$(curl -fsSL https://gitee.com/yttty/dotfiles/raw/master/bootstrap_cn.sh)"```
-        - ```sh -c "$(wget https://gitee.com/yttty/dotfiles/raw/master/bootstrap_cn.sh -O -)"```
+1. First, (if you haven't done so,) install the dependencies
+    
+    ```bash
+    sudo apt install git curl zsh
+    ```
+
+2. Then, usually you could setup config by
+    - via `curl`
+    
+        ```bash
+        sh -c "$(curl -fsSL https://raw.githubusercontent.com/yttty/dotfiles/main/bootstrap.sh)"
+        ```
+
+    - or via `wget`
+        
+        ```bash
+        sh -c "$(wget https://raw.githubusercontent.com/yttty/dotfiles/main/bootstrap.sh -O -)"
+        ```
+
 3. Lastly, change your default shell to `zsh`
-    - *(sudo needed)* ```sudo chsh -s $(which zsh) $(whoami)```
-    - *(Password needed)* ```chsh -s $(grep /zsh$ /etc/shells | tail -1)```
+    - *(sudo needed)* via `sudo chsh`
+        
+        ```bash
+        sudo chsh -s $(which zsh) $(whoami)
+        ```
+
+    - *(Password needed)* via `chsh`
+        
+        ```bash
+        chsh -s $(grep /zsh$ /etc/shells | tail -1)
+        ```
+
     - If neither work, try
+    
         ```bash
         mv ~/.bash_profile ~/.bash_profile.bak
         echo 'export SHELL=/usr/bin/zsh
         [ -z "$ZSH_VERSION" ] && exec "$SHELL" -l' > ~/.bash_profile
         ```
+
 4. *If you decide to use this configuration as is, don't forget to change your name and e-mail address in the `.gitconfig` files.*
 
 ## Optional config
 
+### Install Python
+- *(Recommended)* via miniconda3
+
+    ```bash
+    sh -c "$(curl -fsSL https://raw.githubusercontent.com/yttty/dotfiles/main/optional/conda/install_miniconda.sh)"
+    ```
+
+- via pyenv
+    - First, install compile dependencies for python
+
+        ```bash
+        sudo apt install -y libssl-dev liblzma-dev libbz2-dev libreadline-dev libsqlite3-dev tk-dev
+        ```
+
+    - Then install pyenv
+
+        ```bash
+        sh -c "$(curl -fsSL https://raw.githubusercontent.com/yttty/dotfiles/main/optional/pyenv/install_pyenv.sh)"
+        ```
+
+    - Then install the appropriate version of Python (e.g., 3.11)
+
+        ```bash
+        source ~/.zshrc
+        pyenv install 3.11.6
+        pyenv global 3.11.6
+        ```
+
 ### Additional monitoring tools
 
-- Install additional monitoring tools ```sudo apt install vim glances htop``` (it will also install system-level ```python3```)
+- Install additional monitoring tools ```sudo apt install glances htop``` (it will also install a system-level ```python3```)
 
 ### Special requirements for vim on old OS versions
 

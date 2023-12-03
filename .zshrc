@@ -46,21 +46,6 @@ source $ZSH/oh-my-zsh.sh
 source $ZSH_CUSTOM/plugins/zsh-autosuggestions/zsh-autosuggestions.zsh
 source $ZSH_CUSTOM/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 
-
-################ user configuration ################
-
-export PATH="$HOME/.local/bin:$HOME/.local/lib/node_modules/bin:/usr/local/bin:$PATH"
-export MANPATH="$HOME/.local/man:/usr/local/man:$MANPATH"
-
-# You may need to manually set your language environment
-export LANG="en_US.UTF-8"
-
-# Compilation flags
-# export ARCHFLAGS="-arch x86_64"
-
-# ssh
-# export SSH_KEY_PATH="~/.ssh/rsa_id"
-
 # Set personal aliases, overriding those provided by oh-my-zsh libs,
 # plugins, and themes. Aliases can be placed here, though oh-my-zsh
 # users are encouraged to define aliases within the ZSH_CUSTOM folder.
@@ -72,4 +57,25 @@ alias mv='mv -i'
 alias du='du -h'
 alias g='git'
 
-source $HOME/.miniconda/etc/profile.d/conda.sh
+# alias for git (not included in the official git pulgin)
+function gclb () { git fetch -p && for branch in $(git for-each-ref --format '%(refname) %(upstream:track)' refs/heads | awk '$2 == "[gone]" {sub("refs/heads/", "", $1); print $1}'); do git branch -D $branch; done; }
+function ggraph () { git log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit --date=relative; }
+
+################ user configuration ################
+
+# This loads nvm
+export NVM_DIR="$HOME/.nvm"
+[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"
+
+export PATH="$HOME/.local/bin:$HOME/.local/lib/node_modules/bin:/usr/local/bin:$PATH"
+export MANPATH="$HOME/.local/man:/usr/local/man:$MANPATH"
+
+# You may need to manually set your language environment.
+# This line should be disabled when using WSL.
+# export LANG="en_US.UTF-8"
+
+# Compilation flags
+# export ARCHFLAGS="-arch x86_64"
+
+# ssh
+# export SSH_KEY_PATH="~/.ssh/rsa_id"
