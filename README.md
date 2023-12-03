@@ -58,7 +58,7 @@
     - First, install compile dependencies for python
 
         ```bash
-        sudo apt install -y libssl-dev liblzma-dev libbz2-dev libreadline-dev libsqlite3-dev tk-dev
+        sudo apt install -y libssl-dev liblzma-dev libbz2-dev libreadline-dev libsqlite3-dev tk-dev libffi-dev
         ```
 
     - Then install pyenv
