@@ -9,6 +9,7 @@ curl -fLo ~/.zshrc https://raw.githubusercontent.com/yttty/dotfiles/main/.zshrc
 # 2. git config
 curl -fLo ~/.gitignore https://raw.githubusercontent.com/yttty/dotfiles/main/.gitignore
 curl -fLo ~/.gitconfig https://raw.githubusercontent.com/yttty/dotfiles/main/.gitconfig
+git-credential-manager configure
 
 # 3. nvm, nodejs, and diff-so-fancy
 curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.5/install.sh | bash

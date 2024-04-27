@@ -4,39 +4,45 @@
 ## One-line config
 
 1. First, (if you haven't done so,) install the dependencies
-    
+
     ```bash
-    sudo apt install git curl zsh
+    sudo apt install git zsh wget curl libicu-dev
+
+    # Install Git Credential Manager
+    GCM_VERSION=2.5.0
+    wget -O gcm-linux_amd64.deb https://github.com/git-ecosystem/git-credential-manager/releases/download/v$GCM_VERSION/gcm-linux_amd64.$GCM_VERSION.deb
+    sudo dpkg -i gcm-linux_amd64.deb
+    rm gcm-linux_amd64.deb
     ```
 
 2. Then, usually you could setup config by
     - via `curl`
-    
+
         ```bash
         sh -c "$(curl -fsSL https://raw.githubusercontent.com/yttty/dotfiles/main/bootstrap.sh)"
         ```
 
     - or via `wget`
-        
+
         ```bash
         sh -c "$(wget https://raw.githubusercontent.com/yttty/dotfiles/main/bootstrap.sh -O -)"
         ```
 
 3. Lastly, change your default shell to `zsh`
     - *(sudo needed)* via `sudo chsh`
-        
+
         ```bash
         sudo chsh -s $(which zsh) $(whoami)
         ```
 
     - *(Password needed)* via `chsh`
-        
+
         ```bash
         chsh -s $(grep /zsh$ /etc/shells | tail -1)
         ```
 
     - If neither work, try
-    
+
         ```bash
         mv ~/.bash_profile ~/.bash_profile.bak
         echo 'export SHELL=/usr/bin/zsh
