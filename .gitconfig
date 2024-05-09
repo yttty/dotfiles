@@ -55,6 +55,7 @@
 [credential]
 	helper = /usr/local/bin/git-credential-manager
 	helper = cache --timeout=3600
+	credentialStore = cache
 [filter "lfs"]
 	smudge = git-lfs smudge -- %f
 	process = git-lfs filter-process
