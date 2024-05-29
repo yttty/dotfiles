@@ -60,15 +60,20 @@ alias g='git'
 # alias for git (not included in the official git pulgin)
 function gclb () { git fetch -p && for branch in $(git for-each-ref --format '%(refname) %(upstream:track)' refs/heads | awk '$2 == "[gone]" {sub("refs/heads/", "", $1); print $1}'); do git branch -D $branch; done; }
 function ggraph () { git log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit --date=relative; }
+function gce () { git credential-cache exit; }
 
-################ user configuration ################
+# git-credential-manager
+export GCM_CREDENTIAL_STORE=cache
+export GCM_CREDENTIAL_CACHE_OPTIONS="--timeout 900"
 
-# This loads nvm
+# nvm
 export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"
 
 export PATH="$HOME/.local/bin:$HOME/.local/lib/node_modules/bin:/usr/local/bin:$PATH"
 export MANPATH="$HOME/.local/man:/usr/local/man:$MANPATH"
+
+################ user configuration ################
 
 # You may need to manually set your language environment.
 # This line should be disabled when using WSL.
