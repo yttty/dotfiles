@@ -1,10 +1,12 @@
+[user]
+	name = yttty
+	email = yttty@users.noreply.github.com
 [core]
 	excludesfile = ~/.gitignore
 	editor = vim
 	pager = diff-so-fancy | less --tabs=4 -RFX
-[user]
-	name = yttty
-	email = yttty@noreply.com
+[init]
+	defaultBranch = main
 [push]
 	default = simple
 [grep]
@@ -53,12 +55,11 @@
 	undo = reset --soft HEAD^
 	unstage = reset HEAD --
 [credential]
+	helper = 
 	helper = /usr/local/bin/git-credential-manager
-	helper = cache --timeout=3600
 [filter "lfs"]
 	smudge = git-lfs smudge -- %f
 	process = git-lfs filter-process
 	required = true
 	clean = git-lfs clean -- %f
-[init]
-	defaultBranch = main
+
