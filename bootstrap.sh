@@ -12,7 +12,7 @@ curl -fLo ~/.gitconfig https://raw.githubusercontent.com/yttty/dotfiles/main/.gi
 git-credential-manager configure
 
 # 3. nvm, nodejs, and diff-so-fancy
-curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.5/install.sh | bash
+curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.40.1/install.sh | bash
 export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"
 nvm install node
@@ -24,4 +24,3 @@ curl -fLo ~/.tmux.conf https://raw.githubusercontent.com/yttty/dotfiles/main/.tm
 
 # 5. vim config
 curl -fLo ~/.vimrc https://raw.githubusercontent.com/yttty/dotfiles/main/.vimrc
-echo | vim -c "PlugInstall! | qall! "

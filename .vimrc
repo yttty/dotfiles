@@ -1,43 +1,6 @@
 @REM Only a few config for the ease of use. No fancy things.
 @REM URL: https://github.com/yttty/dotfiles
 
-"*****************************************************************************
-"" Vim-PLug core
-"*****************************************************************************
-let vimplug_exists=expand('~/.vim/autoload/plug.vim')
-
-let g:vim_bootstrap_langs = "c,python"
-let g:vim_bootstrap_editor = "vim"				" nvim or vim
-
-if !filereadable(vimplug_exists)
-  if !executable("curl")
-    echoerr "You have to install curl or first install vim-plug yourself!"
-    execute "q!"
-  endif
-  echo "Installing Vim-Plug..."
-  echo ""
-  silent exec "!\curl -fLo " . vimplug_exists . " --create-dirs https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim"
-  let g:not_finish_vimplug = "yes"
-
-  autocmd VimEnter * PlugInstall
-endif
-
-" Required:
-call plug#begin(expand('~/.vim/plugged'))
-
-"*****************************************************************************
-"" Plug install packages
-"*****************************************************************************
-Plug 'tpope/vim-commentary' " use gcc to comment/uncomment
-Plug 'bronson/vim-trailing-whitespace'
-Plug 'Yggdroot/indentLine' " Display the indention levels with thin vertical lines
-Plug 'sheerun/vim-polyglot' " Syntax highlighting
-
-" Color
-Plug 'tomasr/molokai'
-
-call plug#end()
-
 " Required:
 filetype plugin indent on
 
@@ -94,11 +57,6 @@ set mousemodel=popup
 set t_Co=256
 set guioptions=egmrti
 set gfn=Monospace\ 10
-
-let g:indentLine_enabled = 1
-let g:indentLine_concealcursor = 0
-let g:indentLine_char = '┆'
-let g:indentLine_faster = 1
 
 if $COLORTERM == 'gnome-terminal'
   set term=gnome-256color
