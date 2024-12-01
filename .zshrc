@@ -60,6 +60,7 @@ alias g='git'
 # alias for git (not included in the official git pulgin)
 function gclb () { git fetch -p && for branch in $(git for-each-ref --format '%(refname) %(upstream:track)' refs/heads | awk '$2 == "[gone]" {sub("refs/heads/", "", $1); print $1}'); do git branch -D $branch; done; }
 function ggraph () { git log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit --date=relative; }
+function gcmu () { git commit -m "update"; }
 function gce () { git credential-cache exit; }
 
 # git-credential-manager
