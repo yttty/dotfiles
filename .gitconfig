@@ -9,6 +9,8 @@
 	defaultBranch = main
 [push]
 	default = simple
+[pull]
+	rebase = false
 [grep]
 	extendRegexp = true
 	lineNumber = true
