@@ -9,6 +9,8 @@
 	defaultBranch = main
 [push]
 	default = simple
+[pull]
+	rebase = false
 [grep]
 	extendRegexp = true
 	lineNumber = true
@@ -62,4 +64,3 @@
 	process = git-lfs filter-process
 	required = true
 	clean = git-lfs clean -- %f
-
