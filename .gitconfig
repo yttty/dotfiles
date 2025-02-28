@@ -3,7 +3,7 @@
 	email = yttty@users.noreply.github.com
 [core]
 	excludesfile = ~/.gitignore
-	editor = nano
+	editor = vim
 	pager = "if [ ! -z \"$(which diff-so-fancy)\" ]; then diff-so-fancy | less --tabs=4 -RFX; else less; fi"
 [init]
 	defaultBranch = main
