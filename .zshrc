@@ -91,9 +91,6 @@ proxifier() {
     fi
 }
 
-alias proxifier='proxifier linux' # proxy in bare linux
-# alias proxifier='proxifier wsl' # proxy in wsl
-
 ################ nvm configuration ################
 export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"
@@ -113,3 +110,5 @@ alias mv='mv -i'
 alias du='du -h'
 alias df='df -h'
 alias g='git'
+alias proxifier='proxifier linux' # proxy in bare linux
+# alias proxifier='proxifier wsl' # proxy in wsl
