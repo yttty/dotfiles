@@ -57,12 +57,12 @@ unset_proxy() {
     git config --global --unset https.proxy
 }
 
-echo_wsl_proxy() {
-    HOST_IP=$(ip route | grep default | awk '{ print $3 }')
-    WSL_IP=$(hostname -I | awk '{print $1}')
+echo_proxy() {
+    GATEWAY_IP=$(ip route | grep default | awk '{ print $3 }')
+    LOCAL_IP=$(hostname -I | awk '{print $1}')
 
-    echo "Host ip:" ${HOST_IP}
-    echo "WSL ip:" ${WSL_IP}
+    echo "Gateway ip:" ${GATEWAY_IP}
+    echo "Local (WSL) ip:" ${LOCAL_IP}
     echo "Current proxy:" ${HTTP_PROXY}
 }
 
@@ -85,7 +85,7 @@ proxifier() {
     elif [ "$2" = "unset" ]; then
         unset_proxy
     elif [ "$2" = "echo" ]; then
-        echo_wsl_proxy
+        echo_proxy
     else
         echo "Unsupported arguments."
     fi
