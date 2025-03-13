@@ -11,7 +11,7 @@ ZSH_THEME="ys"
 # omz completion & correction
 # CASE_SENSITIVE="true"
 # HYPHEN_INSENSITIVE="true"
-ENABLE_CORRECTION="true"
+# ENABLE_CORRECTION="true"
 
 # omz plugins: https://github.com/ohmyzsh/ohmyzsh/wiki/Plugins
 plugins=(git pip conda command-not-found colored-man-pages zsh-autosuggestions zsh-syntax-highlighting)
