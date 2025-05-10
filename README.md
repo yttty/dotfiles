@@ -6,7 +6,7 @@
 1. First, (if you haven't done so,) install the dependencies
 
     ```bash
-    sudo apt install git zsh wget curl libicu-dev
+    sudo apt install git zsh wget curl libssl
 
     # Install Git Credential Manager
     GCM_VERSION=2.6.1
