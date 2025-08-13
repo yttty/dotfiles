@@ -53,6 +53,12 @@
 
 ## Optional config
 
+### Install Docker
+
+```bash
+sh -c "$(curl -fsSL https://raw.githubusercontent.com/yttty/dotfiles/main/optional/docker/install_docker.sh)"
+```
+
 ### Install Python
 - *(Recommended)* via miniconda3
 
