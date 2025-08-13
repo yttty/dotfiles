@@ -6,7 +6,8 @@
 1. First, (if you haven't done so,) install the dependencies
 
     ```bash
-    sudo apt install git zsh wget curl tmux libssl-dev
+    sudo apt update
+    sudo apt install git zsh wget curl tmux libssl-dev -y
 
     # Install Git Credential Manager
     GCM_VERSION=2.6.1
