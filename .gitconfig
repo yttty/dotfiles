@@ -4,7 +4,7 @@
 [core]
 	excludesfile = ~/.gitignore
 	editor = vim
-	pager = diff-so-fancy | less --tabs=4 -RFX
+	pager = "if [ ! -z \"$(which diff-so-fancy)\" ]; then diff-so-fancy | less --tabs=4 -RFX; else less; fi"
 [init]
 	defaultBranch = main
 [push]
@@ -41,27 +41,26 @@
 	co = checkout
 	cp = cherry-pick
 	cm = commit -m
-	cmu = commit -m "update"
 	fall = log --all --grep
 	find = log --grep
-	fmt = clang-format
 	hist = log -p -M --follow --stat
 	lg = log -p
 	ll = log --stat
 	patch = show HEAD -U999999
-	review = !git diff --name-only --cached | xargs -n 1 git blame --porcelain | grep  \"^author \" | sort | uniq -c | sort -nr | head -10
 	sha = rev-parse HEAD
 	st = status
 	top = log --stat -n 1
 	uncommit = reset HEAD~
 	undo = reset --soft HEAD^
 	unstage = reset HEAD --
-[credential]
-	helper = 
-	helper = /usr/local/bin/git-credential-manager
 [filter "lfs"]
 	smudge = git-lfs smudge -- %f
 	process = git-lfs filter-process
 	required = true
 	clean = git-lfs clean -- %f
-
+[credential]
+	helper =
+	helper = /usr/local/bin/git-credential-manager
+	guiPrompt = false # disable GUI
+	credentialStore = cache # Options: cache/plaintext
+	cacheOptions = --timeout 300

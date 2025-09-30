@@ -6,10 +6,11 @@
 1. First, (if you haven't done so,) install the dependencies
 
     ```bash
-    sudo apt install git zsh wget curl libicu-dev
+    sudo apt update
+    sudo apt install git zsh wget curl tmux libssl-dev -y
 
     # Install Git Credential Manager
-    GCM_VERSION=2.6.0
+    GCM_VERSION=2.6.1
     wget -O gcm-linux_amd64.deb https://github.com/git-ecosystem/git-credential-manager/releases/download/v$GCM_VERSION/gcm-linux_amd64.$GCM_VERSION.deb
     sudo dpkg -i gcm-linux_amd64.deb
     rm gcm-linux_amd64.deb
@@ -52,6 +53,12 @@
 4. *If you decide to use this configuration as is, don't forget to change your name and e-mail address in the `.gitconfig` files.*
 
 ## Optional config
+
+### Install Docker
+
+```bash
+sh -c "$(curl -fsSL https://raw.githubusercontent.com/yttty/dotfiles/main/optional/docker/install_docker.sh)"
+```
 
 ### Install Python
 - *(Recommended)* via miniconda3
