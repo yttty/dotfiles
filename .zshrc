@@ -19,13 +19,7 @@ plugins=(git conda colored-man-pages zsh-autosuggestions zsh-syntax-highlighting
 # activate omz
 source $ZSH/oh-my-zsh.sh
 
-################ functions ################
-# alias for git (not included in the official git pulgin)
-gclb() { git fetch -p && for branch in $(git for-each-ref --format '%(refname) %(upstream:track)' refs/heads | awk '$2 == "[gone]" {sub("refs/heads/", "", $1); print $1}'); do git branch -D $branch; done; }
-ggraph() { git log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit --date=relative; }
-gcmu() { git commit -m "chore: update"; }
-gce() { git credential-cache exit; }
-
+################ proxy functions ################
 set_proxy() {
     # $1: PROXY_HTTP
     # $2: PROXY_SOCKS5
@@ -91,17 +85,7 @@ proxifier() {
     fi
 }
 
-################ nvm configuration ################
-export NVM_DIR="$HOME/.nvm"
-[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"
-
-################ user configuration ################
-# export LANG="en_US.UTF-8"
-# export ARCHFLAGS="-arch x86_64"
-# export SSH_KEY_PATH="~/.ssh/rsa_id"
-export PATH="$HOME/.local/bin:$HOME/.local/lib/node_modules/bin:/usr/local/bin:$PATH"
-export MANPATH="$HOME/.local/man:/usr/local/man:$MANPATH"
-
+################ alias configuration ################
 # override those provided by oh-my-zsh libs, plugins, and themes.
 alias l='ls -lAh'
 alias cls='clear'
@@ -112,33 +96,26 @@ alias df='df -h'
 alias g='git'
 
 # alias for git (not included in the official git pulgin)
-function gclb () { git fetch -p && for branch in $(git for-each-ref --format '%(refname) %(upstream:track)' refs/heads | awk '$2 == "[gone]" {sub("refs/heads/", "", $1); print $1}'); do git branch -D $branch; done; }
-function ggraph () { git log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit --date=relative; }
-function gcmu () { git commit -m "update"; }
-function gce () { git credential-cache exit; }
+gclb() { git fetch -p && for branch in $(git for-each-ref --format '%(refname) %(upstream:track)' refs/heads | awk '$2 == "[gone]" {sub("refs/heads/", "", $1); print $1}'); do git branch -D $branch; done; }
+ggraph() { git log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit --date=relative; }
+gcmu() { git commit -m "chore: update"; }
+gce() { git credential-cache exit; }
 
-# git-credential-manager
+################ git-credential-manager configuration ################
 export GCM_CREDENTIAL_STORE=cache
 export GCM_CREDENTIAL_CACHE_OPTIONS="--timeout 900"
 
-# nvm
-export NVM_DIR="$HOME/.nvm"
-[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"
-
+################ user configuration ################
+# export LANG="en_US.UTF-8"
+# export ARCHFLAGS="-arch x86_64"
+# export SSH_KEY_PATH="~/.ssh/rsa_id"
 export PATH="$HOME/.local/bin:$HOME/.local/lib/node_modules/bin:/usr/local/bin:$PATH"
 export MANPATH="$HOME/.local/man:/usr/local/man:$MANPATH"
 
-################ user configuration ################
-
-# You may need to manually set your language environment.
-# This line should be disabled when using WSL.
-# export LANG="en_US.UTF-8"
-
-# Compilation flags
-# export ARCHFLAGS="-arch x86_64"
-
-# ssh
-# export SSH_KEY_PATH="~/.ssh/rsa_id"
-
+################ proxifier configuration ################
 alias proxifier='proxifier linux' # proxy in bare linux
 # alias proxifier='proxifier wsl' # proxy in wsl
+
+################ nvm configuration ################
+export NVM_DIR="$HOME/.nvm"
+[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"
