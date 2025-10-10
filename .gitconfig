@@ -9,6 +9,7 @@
 	defaultBranch = main
 [push]
 	default = simple
+	autoSetupRemote = true
 [pull]
 	rebase = false
 [grep]
@@ -62,5 +63,3 @@
 	helper =
 	helper = /usr/local/bin/git-credential-manager
 	guiPrompt = false # disable GUI
-	credentialStore = cache # Options: cache/plaintext
-	cacheOptions = --timeout 300
