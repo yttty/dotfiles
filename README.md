@@ -7,7 +7,7 @@
 
     ```bash
     sudo apt update
-    sudo apt install git zsh wget curl tmux libssl-dev -y
+    sudo apt install git zsh wget curl tmux libssl-dev libicu-dev -y
 
     # Install Git Credential Manager
     GCM_VERSION=2.6.1
