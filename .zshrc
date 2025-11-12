@@ -99,6 +99,7 @@ alias g='git'
 gclb() { git fetch -p && for branch in $(git for-each-ref --format '%(refname) %(upstream:track)' refs/heads | awk '$2 == "[gone]" {sub("refs/heads/", "", $1); print $1}'); do git branch -D $branch; done; }
 ggraph() { git log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit --date=relative; }
 gcmu() { git commit -m "chore: update"; }
+gcmm() { git commit -m $1; }
 gce() { git credential-cache exit; }
 
 ################ git-credential-manager configuration ################
