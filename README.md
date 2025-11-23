@@ -55,25 +55,22 @@
     ```
 
 2. Change your default shell to `zsh`
-    - *(sudo needed)* via `sudo chsh`
+    ```bash
+    # Need sudo
+    sudo chsh -s $(which zsh) $(whoami)
+    ```
 
-        ```bash
-        sudo chsh -s $(which zsh) $(whoami)
-        ```
+    ```bash
+    # Need password
+    chsh -s $(grep /zsh$ /etc/shells | tail -1)
+    ```
 
-    - *(Password needed)* via `chsh`
-
-        ```bash
-        chsh -s $(grep /zsh$ /etc/shells | tail -1)
-        ```
-
-    - If neither work, try
-
-        ```bash
-        mv ~/.bash_profile ~/.bash_profile.bak
-        echo 'export SHELL=/usr/bin/zsh
-        [ -z "$ZSH_VERSION" ] && exec "$SHELL" -l' > ~/.bash_profile
-        ```
+    ```bash
+    # Need bash
+    mv ~/.bash_profile ~/.bash_profile.bak
+    echo 'export SHELL=/usr/bin/zsh
+    [ -z "$ZSH_VERSION" ] && exec "$SHELL" -l' > ~/.bash_profile
+    ```
 
 3. Install Python
    - *(Recommended)* via miniconda3
