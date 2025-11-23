@@ -25,6 +25,7 @@ export LANG=C.UTF-8
 export LC_ALL=C.UTF-8
 export PATH=$HOME/.local/bin:$HOME/.local/share/diff-so-fancy:$HOME/.local/lib/node_modules/bin:/usr/local/bin:$PATH
 export MANPATH="$HOME/.local/man:/usr/local/man:$MANPATH"
+export PLUGIN_ROOT=~/.plugins
 
 ################ alias configuration ################
 # override those provided by oh-my-zsh libs, plugins, and themes.
@@ -86,6 +87,6 @@ export GCM_CREDENTIAL_STORE=cache
 export GCM_CREDENTIAL_CACHE_OPTIONS="--timeout 900"
 
 ################ proxifier configuration ################
-source ${ZSH_PLUGIN}/proxifier/proxifier.sh
+source ${PLUGIN_ROOT}/proxifier/proxifier.sh
 alias proxifier='proxifier linux' # proxy in bare linux
 # alias proxifier='proxifier wsl' # proxy in wsl
