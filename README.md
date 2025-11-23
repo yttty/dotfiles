@@ -1,35 +1,60 @@
 # dotfiles
 💾 My dotfiles repository. If you have a suggestion, improvement or question, don't hesitate to open an issue.
 
-## One-line config
+## System-level setup
 
-1. First, (if you haven't done so,) install the dependencies
+1. Install the dependencies
 
     ```bash
     sudo apt update
-    sudo apt install git zsh wget curl tmux libssl-dev libicu-dev -y
+    sudo apt install vim nano git git-lfs zsh wget curl iproute2 tmux htop nload libssl-dev libicu-dev -y
+    ```
 
-    # Install Git Credential Manager
+2. Install Git Credential Manager
+    ```bash
     GCM_VERSION=2.6.1
     wget -O gcm-linux_amd64.deb https://github.com/git-ecosystem/git-credential-manager/releases/download/v$GCM_VERSION/gcm-linux_amd64.$GCM_VERSION.deb
     sudo dpkg -i gcm-linux_amd64.deb
     rm gcm-linux_amd64.deb
     ```
 
-2. Then, usually you could setup config by
-    - via `curl`
+3. Install Docker
+    ```bash
+    # Add Docker's official GPG key:
+    sudo apt-get update
+    sudo apt-get install ca-certificates curl
+    sudo install -m 0755 -d /etc/apt/keyrings
+    sudo curl -fsSL https://download.docker.com/linux/ubuntu/gpg -o /etc/apt/keyrings/docker.asc
+    sudo chmod a+r /etc/apt/keyrings/docker.asc
 
-        ```bash
-        sh -c "$(curl -fsSL https://raw.githubusercontent.com/yttty/dotfiles/main/bootstrap.sh)"
-        ```
+    # Add the repository to Apt sources:
+    echo \
+    "deb [arch=$(dpkg --print-architecture) signed-by=/etc/apt/keyrings/docker.asc] https://download.docker.com/linux/ubuntu \
+    $(. /etc/os-release && echo "${UBUNTU_CODENAME:-$VERSION_CODENAME}") stable" | \
+    sudo tee /etc/apt/sources.list.d/docker.list > /dev/null
+    sudo apt-get update
+    sudo apt-get install docker-ce docker-ce-cli containerd.io docker-buildx-plugin docker-compose-plugin -y
+    ```
 
-    - or via `wget`
+4. Add user to docker group
+    ```bash
+    sudo usermod -aG docker $(whoami)
+    ```
 
-        ```bash
-        sh -c "$(wget https://raw.githubusercontent.com/yttty/dotfiles/main/bootstrap.sh -O -)"
-        ```
+## User-level setup
 
-3. Lastly, change your default shell to `zsh`
+1. Setup user-level config by
+    ```bash
+    # via curl
+    sh -c "$(curl -fsSL https://raw.githubusercontent.com/yttty/dotfiles/main/bootstrap.sh)"
+    ```
+
+    ```bash
+    # via wget
+    sh -c "$(wget https://raw.githubusercontent.com/yttty/dotfiles/main/bootstrap.sh -O -)"
+    ```
+
+2. Change your default shell to `zsh`
     - *(sudo needed)* via `sudo chsh`
 
         ```bash
@@ -50,47 +75,40 @@
         [ -z "$ZSH_VERSION" ] && exec "$SHELL" -l' > ~/.bash_profile
         ```
 
-4. *If you decide to use this configuration as is, don't forget to change your name and e-mail address in the `.gitconfig` files.*
+3. Install Python
+   - *(Recommended)* via miniconda3
 
-## Optional config
+       ```bash
+       sh -c "$(curl -fsSL https://raw.githubusercontent.com/yttty/dotfiles/main/optional/conda/install_miniconda.sh)"
+       ```
 
-### Install Docker
+   - via pyenv
+       - First, install compile dependencies for python
 
-```bash
-sh -c "$(curl -fsSL https://raw.githubusercontent.com/yttty/dotfiles/main/optional/docker/install_docker.sh)"
-```
+           ```bash
+           sudo apt install -y libssl-dev liblzma-dev libbz2-dev libreadline-dev libsqlite3-dev tk-dev libffi-dev
+           ```
 
-### Install Python
-- *(Recommended)* via miniconda3
+       - Then install pyenv
 
+           ```bash
+           sh -c "$(curl -fsSL https://raw.githubusercontent.com/yttty/dotfiles/main/optional/pyenv/install_pyenv.sh)"
+           ```
+
+       - Then install the appropriate version of Python (e.g., 3.14)
+
+           ```bash
+           source ~/.zshrc
+           pyenv install 3.14.0
+           pyenv global 3.14.0
+           ```
+
+4. Install node
     ```bash
-    sh -c "$(curl -fsSL https://raw.githubusercontent.com/yttty/dotfiles/main/optional/conda/install_miniconda.sh)"
+    sh -c "$(curl -fsSL https://raw.githubusercontent.com/yttty/dotfiles/main/optional/node/install_node.sh)"
     ```
 
-- via pyenv
-    - First, install compile dependencies for python
-
-        ```bash
-        sudo apt install -y libssl-dev liblzma-dev libbz2-dev libreadline-dev libsqlite3-dev tk-dev libffi-dev
-        ```
-
-    - Then install pyenv
-
-        ```bash
-        sh -c "$(curl -fsSL https://raw.githubusercontent.com/yttty/dotfiles/main/optional/pyenv/install_pyenv.sh)"
-        ```
-
-    - Then install the appropriate version of Python (e.g., 3.11)
-
-        ```bash
-        source ~/.zshrc
-        pyenv install 3.11.6
-        pyenv global 3.11.6
-        ```
-
-### Additional monitoring tools
-
-- Install additional monitoring tools ```sudo apt install glances htop``` (it will also install a system-level ```python3```)
+5. *If you decide to use this configuration as is, don't forget to change your name and e-mail address in the `.gitconfig` files.*
 
 ### Special requirements for vim on old OS versions
 

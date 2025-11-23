@@ -14,109 +14,78 @@ ZSH_THEME="ys"
 # ENABLE_CORRECTION="true"
 
 # omz plugins: https://github.com/ohmyzsh/ohmyzsh/wiki/Plugins
-plugins=(git conda colored-man-pages zsh-autosuggestions zsh-syntax-highlighting)
+plugins=(git colored-man-pages zsh-autosuggestions zsh-syntax-highlighting)
 
 # activate omz
 source $ZSH/oh-my-zsh.sh
 
-################ proxy functions ################
-set_proxy() {
-    # $1: PROXY_HTTP
-    # $2: PROXY_SOCKS5
+################ system environment ################
 
-    echo "Set system proxy."
-    export http_proxy="$1"
-    export HTTP_PROXY="$1"
-    export https_proxy="$1"
-    export HTTPS_proxy="$1"
-    export all_proxy="$2"
-    export ALL_proxy="$2"
-
-    echo "Set git proxy."
-    git config --global http.proxy "$1"
-    git config --global https.proxy "$1"
-}
-
-unset_proxy() {
-    echo "Unset system proxy."
-    unset http_proxy
-    unset HTTP_PROXY
-    unset https_proxy
-    unset HTTPS_PROXY
-    unset all_proxy
-    unset ALL_PROXY
-
-    echo "Unset git proxy."
-    git config --global --unset http.proxy
-    git config --global --unset https.proxy
-}
-
-echo_proxy() {
-    GATEWAY_IP=$(ip route | grep default | awk '{ print $3 }')
-    LOCAL_IP=$(hostname -I | awk '{print $1}')
-
-    echo "Gateway ip:" ${GATEWAY_IP}
-    echo "Local (WSL) ip:" ${LOCAL_IP}
-    echo "Current proxy:" ${HTTP_PROXY}
-}
-
-proxifier() {
-    if [ "$1" = "wsl" ]; then
-        HOST_IP=$(ip route | grep default | awk '{ print $3 }')
-        PORT=7890
-    elif [ "$1" = "linux" ]; then
-        HOST_IP=127.0.0.1
-        PORT=7890
-    else
-        echo "Unsupported platform."
-    fi
-
-    PROXY_HTTP="http://${HOST_IP}:${PORT}"
-    PROXY_SOCKS5="socks5://${HOST_IP}:${PORT}"
-
-    if [ "$2" = "set" ]; then
-        set_proxy $PROXY_HTTP $PROXY_SOCKS5
-    elif [ "$2" = "unset" ]; then
-        unset_proxy
-    elif [ "$2" = "echo" ]; then
-        echo_proxy
-    else
-        echo "Unsupported arguments."
-    fi
-}
+export LANG=C.UTF-8
+export LC_ALL=C.UTF-8
+export PATH=$HOME/.local/bin:$HOME/.local/share/diff-so-fancy:$HOME/.local/lib/node_modules/bin:/usr/local/bin:$PATH
+export MANPATH="$HOME/.local/man:/usr/local/man:$MANPATH"
 
 ################ alias configuration ################
 # override those provided by oh-my-zsh libs, plugins, and themes.
 alias l='ls -lAh'
+alias ll='ls -lh'
 alias cls='clear'
 alias cp='cp -i'
 alias mv='mv -i'
 alias du='du -h'
 alias df='df -h'
-alias g='git'
 
-# alias for git (not included in the official git pulgin)
+# alias for git
 gclb() { git fetch -p && for branch in $(git for-each-ref --format '%(refname) %(upstream:track)' refs/heads | awk '$2 == "[gone]" {sub("refs/heads/", "", $1); print $1}'); do git branch -D $branch; done; }
-ggraph() { git log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit --date=relative; }
 gcmu() { git commit -m "chore: update"; }
-gcmm() { git commit -m $1; }
 gce() { git credential-cache exit; }
+gaa() { git add --all; }
+gd() { git diff; }
+gdc() { git diff --cached; }
+ggraph() { git log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit --date=relative; }
+gfind() { git log --grep $1; } # Grep in commit message
+ghist() { git log -p -M --follow --stat $1; } # History of a file
+gsha() { git rev-parse HEAD; }
+gst() { git status; }
+gtop() { git log --stat -n 1; }
+gb() { git branch; }
+gba() { git branch --all; }
+gbd() { git branch --delete $1; }
+alias g='git'
+alias gl='git pull'
+alias gp='git push'
+alias gg='ggraph'
+alias gbgd='LANG=C git branch --no-color -vv | grep ": gone\]" | cut -c 3- | awk '"'"'{print $1}'"'"' | xargs git branch -d'
+alias gbgD='LANG=C git branch --no-color -vv | grep ": gone\]" | cut -c 3- | awk '"'"'{print $1}'"'"' | xargs git branch -D'
+alias gbm='git branch --move'
+alias gbnm='git branch --no-merged'
+alias gbr='git branch --remote'
+alias ggsup='git branch --set-upstream-to=origin/$(git_current_branch)'
+alias gbg='LANG=C git branch -vv | grep ": gone\]"'
+alias gco='git checkout'
+alias gcor='git checkout --recurse-submodules'
+alias gcb='git checkout -b'
+alias gcbd='git checkout -b dev'
+alias gcd='git checkout dev'
+alias gcB='git checkout -B'
+alias gcm='git checkout main'
+alias gcp='git cherry-pick'
+alias gcpa='git cherry-pick --abort'
+alias gcpc='git cherry-pick --continue'
+alias gclean='git clean --interactive -d'
+alias gcl='git clone --recurse-submodules'
+alias gclf='git clone --recursive --shallow-submodules --filter=blob:none --also-filter-submodules'
+alias gcmm='git commit -m'
+alias glg='git log'
+alias glp='git log -p'
+alias gll='git log --stat'
 
 ################ git-credential-manager configuration ################
 export GCM_CREDENTIAL_STORE=cache
 export GCM_CREDENTIAL_CACHE_OPTIONS="--timeout 900"
 
-################ user configuration ################
-# export LANG="en_US.UTF-8"
-# export ARCHFLAGS="-arch x86_64"
-# export SSH_KEY_PATH="~/.ssh/rsa_id"
-export PATH="$HOME/.local/bin:$HOME/.local/lib/node_modules/bin:/usr/local/bin:$PATH"
-export MANPATH="$HOME/.local/man:/usr/local/man:$MANPATH"
-
 ################ proxifier configuration ################
+source ${ZSH_PLUGIN}/proxifier/proxifier.sh
 alias proxifier='proxifier linux' # proxy in bare linux
 # alias proxifier='proxifier wsl' # proxy in wsl
-
-################ nvm configuration ################
-export NVM_DIR="$HOME/.nvm"
-[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"
