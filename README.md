@@ -7,12 +7,12 @@
 
     ```bash
     sudo apt update
-    sudo apt install vim nano git git-lfs zsh wget curl iproute2 tmux htop nload libssl-dev libicu-dev -y
+    sudo apt install vim nano git git-lfs zsh wget curl iproute2 tmux htop nload libssl-dev libicu-dev ncurses-term -y
     ```
 
 2. Install Git Credential Manager
     ```bash
-    GCM_VERSION=2.6.1
+    GCM_VERSION=2.7.3
     wget -O gcm-linux_amd64.deb https://github.com/git-ecosystem/git-credential-manager/releases/download/v$GCM_VERSION/gcm-linux_amd64.$GCM_VERSION.deb
     sudo dpkg -i gcm-linux_amd64.deb
     rm gcm-linux_amd64.deb
