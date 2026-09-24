@@ -12,15 +12,15 @@
 
 2. Install Git Credential Manager
     ```bash
-    GCM_VERSION=2.7.3
-    wget -O gcm-linux_amd64.deb https://github.com/git-ecosystem/git-credential-manager/releases/download/v$GCM_VERSION/gcm-linux_amd64.$GCM_VERSION.deb
+    GCM_VERSION=2.9.1
+    wget -O gcm-linux_amd64.deb https://github.com/git-ecosystem/git-credential-manager/releases/download/v$GCM_VERSION/gcm-linux-x64-$GCM_VERSION.deb
     sudo dpkg -i gcm-linux_amd64.deb
     rm gcm-linux_amd64.deb
     ```
 
 3. Install Docker
     ```bash
-    # Add Docker's official GPG key:
+    # Add Docker official GPG key:
     sudo apt-get update
     sudo apt-get install ca-certificates curl
     sudo install -m 0755 -d /etc/apt/keyrings
