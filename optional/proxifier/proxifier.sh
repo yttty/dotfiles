@@ -7,9 +7,9 @@ set_proxy() {
     export http_proxy="$1"
     export HTTP_PROXY="$1"
     export https_proxy="$1"
-    export HTTPS_proxy="$1"
+    export HTTPS_PROXY="$1"
     export all_proxy="$2"
-    export ALL_proxy="$2"
+    export ALL_PROXY="$2"
 
     echo "Set git proxy."
     git config --global http.proxy "$1"
@@ -36,7 +36,12 @@ echo_proxy() {
 
     echo "Gateway ip:" ${GATEWAY_IP}
     echo "Local (WSL) ip:" ${LOCAL_IP}
-    echo "Current proxy:" ${HTTP_PROXY}
+    echo "http_proxy:  [${http_proxy}]"
+    echo "HTTP_PROXY:  [${HTTP_PROXY}]"
+    echo "https_proxy: [${https_proxy}]"
+    echo "HTTPS_PROXY: [${HTTPS_PROXY}]"
+    echo "all_proxy:   [${all_proxy}]"
+    echo "ALL_PROXY:   [${ALL_PROXY}]"
 }
 
 proxifier() {
@@ -47,7 +52,8 @@ proxifier() {
         HOST_IP=127.0.0.1
         PORT=7890
     else
-        echo "Unsupported platform."
+        echo "Unsupported platform: $1" >&2
+        return 1
     fi
 
     PROXY_HTTP="http://${HOST_IP}:${PORT}"
