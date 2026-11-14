@@ -1,0 +1,8 @@
+[Desktop Entry]
+Version=1.0
+Type=Application
+Name=Proxy Off
+Comment=Turn off GNOME system proxy
+Exec=/home/tim/.local/bin/proxy-off
+Icon=network-offline
+Terminal=false

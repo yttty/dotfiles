@@ -10,6 +10,8 @@ set_proxy() {
     export HTTPS_PROXY="$1"
     export all_proxy="$2"
     export ALL_PROXY="$2"
+    export no_proxy="localhost,127.0.0.0/8,192.168.0.0/16,10.0.0.0/8,172.16.0.0/12,::1"
+    export NO_PROXY="$no_proxy"
 
     echo "Set git proxy."
     git config --global http.proxy "$1"
@@ -24,6 +26,8 @@ unset_proxy() {
     unset HTTPS_PROXY
     unset all_proxy
     unset ALL_PROXY
+    unset no_proxy
+    unset NO_PROXY
 
     echo "Unset git proxy."
     git config --global --unset http.proxy
@@ -42,6 +46,8 @@ echo_proxy() {
     echo "HTTPS_PROXY: [${HTTPS_PROXY}]"
     echo "all_proxy:   [${all_proxy}]"
     echo "ALL_PROXY:   [${ALL_PROXY}]"
+    echo "no_proxy:    [${no_proxy}]"
+    echo "NO_PROXY:    [${NO_PROXY}]"
 }
 
 proxifier() {

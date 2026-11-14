@@ -6,13 +6,6 @@ git clone --depth=1 https://github.com/zsh-users/zsh-autosuggestions ${ZSH_CUSTO
 git clone --depth=1 https://github.com/zsh-users/zsh-syntax-highlighting ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-syntax-highlighting
 curl -fLo ~/.zshrc https://raw.githubusercontent.com/yttty/dotfiles/main/.zshrc
 
-# proxifier
-PLUGIN_ROOT=~/.plugins
-mkdir -p ${PLUGIN_ROOT}
-PROXIFIER_DIR=${PLUGIN_ROOT}/proxifier
-mkdir -p ${PROXIFIER_DIR}
-curl -fLo ${PROXIFIER_DIR}/proxifier.sh https://raw.githubusercontent.com/yttty/dotfiles/main/optional/proxifier/proxifier.sh
-
 # diff-so-fancy
 mkdir -p ~/.local/share/diff-so-fancy/lib
 curl -fsSL "https://raw.githubusercontent.com/so-fancy/diff-so-fancy/refs/heads/next/diff-so-fancy" \

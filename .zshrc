@@ -87,6 +87,8 @@ export GCM_CREDENTIAL_STORE=cache
 export GCM_CREDENTIAL_CACHE_OPTIONS="--timeout 900"
 
 ################ proxifier configuration ################
-source ${PLUGIN_ROOT}/proxifier/proxifier.sh
-alias proxifier='proxifier linux' # proxy in bare linux
-# alias proxifier='proxifier wsl' # proxy in wsl
+if [[ -f "$PLUGIN_ROOT/proxifier/proxifier.sh" ]]; then
+    source "$PLUGIN_ROOT/proxifier/proxifier.sh"
+    alias proxifier='proxifier linux' # proxy in bare linux
+    # alias proxifier='proxifier wsl' # proxy in wsl
+fi
