@@ -3,12 +3,24 @@
 
 ## System-level setup
 
-1. Install the dependencies
+1. Install the minimal dependencies for system admin
 
     ```bash
     sudo apt update
-    sudo apt install vim nano git git-lfs zsh wget curl iproute2 tmux htop nload libssl-dev libicu-dev ncurses-term libatomic1 -y
+    sudo apt install -y \
+        passwd iproute2 iputils-ping net-tools \
+        curl wget openssh-server ca-certificates \
+        bash-completion man-db manpages less tree file \
+        htop btop lsof psmisc procps ncdu duf \
+        rsync git git-lfs unzip zip tar xz-utils \
+        nload dnsutils traceroute tcpdump \
+        smartmontools nvme-cli hdparm lm-sensors \
+        pciutils usbutils parted gdisk e2fsprogs \
+        chrony unattended-upgrades needrestart \
+        tmux zsh vim nano ncurses-term \
+        libssl-dev libicu-dev libatomic1
     ```
+
 
 2. Install Git Credential Manager
     ```bash
