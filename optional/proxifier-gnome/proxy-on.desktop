@@ -1,0 +1,8 @@
+[Desktop Entry]
+Version=1.0
+Type=Application
+Name=Proxy On
+Comment=Turn on GNOME system proxy
+Exec=/home/tim/.local/bin/proxy-on
+Icon=network-wired
+Terminal=false
